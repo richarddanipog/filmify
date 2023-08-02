@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import mockGalleryData from "../data/galleryMovies.json";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import ItemModal from "../components/ItemModal/ItemModa";
+import { ThreeDots } from "react-bootstrap-icons";
 
 const GalleryMedia = (): JSX.Element => {
   const [items, setItems] = useState<any>([]);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,9 +26,15 @@ const GalleryMedia = (): JSX.Element => {
               />
               <Card.ImgOverlay
                 className="img-overlay"
-                style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+                style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
               >
-                <Card.Title>{item.title}</Card.Title>
+                <ThreeDots onClick={() => setModalShow(item.id)} />
+
+                <ItemModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  item={item}
+                />
               </Card.ImgOverlay>
             </Card>
           </Col>
