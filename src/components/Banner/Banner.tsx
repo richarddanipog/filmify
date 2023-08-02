@@ -12,6 +12,7 @@ export const Banner = ({ ItemId }: { ItemId: string }): JSX.Element => {
       axios
         .get(url)
         .then(function (response) {
+          console.log(response.data);
           setImagePath(response.data.backdrops[0].file_path);
         })
         .catch(function (error) {
