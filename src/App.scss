@@ -17,19 +17,22 @@
     margin-bottom: 1em;
   }
   &-content {
-    height: 40vh;
     margin-bottom: 2em;
     display: flex;
+    overflow: hidden;
     img {
-      // height: 70%;
-      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
     }
 
     &-text {
-      height: 70%;
+      height: 100%;
 
       .genres {
         margin-top: 1em;
+        display: flex;
+        flex-wrap: wrap;
         span {
           margin-right: 1em;
           border: 1px solid;

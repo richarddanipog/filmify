@@ -4,24 +4,21 @@ import axios from "axios";
 const { REACT_APP_API_KEY, REACT_APP_TMDB_URL } = process.env;
 
 export const Banner = ({ ItemId }: { ItemId: string }): JSX.Element => {
-  const [imagePath, setImagePath] = useState(
-    "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg"
-  );
+  const [imagePath, setImagePath] = useState();
 
-  // useEffect(() => {
-  //   if (ItemId) {
-  //     const url = `${REACT_APP_TMDB_URL}/movie/${ItemId}/images?api_key=${REACT_APP_API_KEY}`;
-  //     axios
-  //       .get(url)
-  //       .then(function (response) {
-  //         console.log(response.data);
-  //         setImagePath(response.data.backdrops[0].file_path);
-  //       })
-  //       .catch(function (error) {
-  //         console.error(error);
-  //       });
-  //   }
-  // }, [ItemId]);
+  useEffect(() => {
+    if (ItemId) {
+      const url = `${REACT_APP_TMDB_URL}/movie/${ItemId}/images?api_key=${REACT_APP_API_KEY}`;
+      axios
+        .get(url)
+        .then(function (response) {
+          setImagePath(response.data.backdrops[0].file_path);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+  }, [ItemId]);
 
   return (
     <div className="wrapper-banner">

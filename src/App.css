@@ -152,7 +152,6 @@
 }
 .casts-list .person {
   display: flex;
-  width: 30vw;
 }
 
 .App {
@@ -170,18 +169,22 @@
   margin-bottom: 1em;
 }
 .item-details-content {
-  height: 40vh;
   margin-bottom: 2em;
   display: flex;
+  overflow: hidden;
 }
 .item-details-content img {
-  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
 }
 .item-details-content-text {
-  height: 70%;
+  height: 100%;
 }
 .item-details-content-text .genres {
   margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
 }
 .item-details-content-text .genres span {
   margin-right: 1em;

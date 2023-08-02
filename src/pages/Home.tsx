@@ -37,33 +37,35 @@ const Home = (): JSX.Element => {
   const getTrendTvSeries = () => {
     const url = `${REACT_APP_TMDB_URL}/trending/tv/day?api_key=${REACT_APP_API_KEY}`;
 
-    axios.get(url).then(({ data }) => setTvSeries(data.results));
+    axios.get(url).then(({ data }) => {
+      setTvSeries(data.results);
+      setLoading(false);
+    });
   };
 
-  // useEffect(() => {
-  //   getTrendMovies();
-  //   getTrendTvSeries();
-  //   setLoading(false);
-  // }, []);
-
   useEffect(() => {
-    // Test ONLY
-    setMovies(movieTrending.results);
-    setTvSeries(tvTrending.results);
-    setRandomItem(movie);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    getTrendMovies();
+    getTrendTvSeries();
   }, []);
 
+  // useEffect(() => {
+  //   // Test ONLY
+  //   setMovies(movieTrending.results);
+  //   setTvSeries(tvTrending.results);
+  //   setRandomItem(movie);
+
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1000);
+  // }, []);
+
   return (
-    <Container fluid>
+    <Container fluid className="p-0">
       {loading ? (
         <Loading />
       ) : (
         <>
-          <Banner ItemId={randomItem.id} />
+          <Banner ItemId={randomItem?.id} />
           <ItemsList items={movies} title={"Movies Trending"} />
           <ItemsList items={tvSeries} title={"TV Series Trending"} />
           <BlogCard item={randomItem} />

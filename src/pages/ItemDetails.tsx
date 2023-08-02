@@ -40,9 +40,20 @@ const ItemDetails = (): JSX.Element => {
   };
 
   const getItemDirectors = (data: any) => {
-    return data.filter(
-      (c: any) => c.job === "Director" || c?.known_for_department === "Writing"
+    const directors = data.filter(
+      (c: any) =>
+        c.job === "Director" ||
+        (c.job === "Executive Producer" &&
+          c.known_for_department === "Production")
     );
+
+    const results = directors.filter((obj: any, index: number, arr: any) => {
+      return (
+        !index || !arr.slice(0, index).some((item: any) => item.id === obj.id)
+      );
+    });
+
+    return results;
   };
 
   useEffect(() => {
@@ -76,44 +87,53 @@ const ItemDetails = (): JSX.Element => {
 
           <hr />
           <Container className="item-details-content">
-            <img
-              src={`http://image.tmdb.org/t/p/w500${itemData?.poster_path}`}
-              alt="poster image"
-            />
-            <Container className="item-details-content-text">
-              <h2>{itemData.title ? itemData.title : itemData.name}</h2>
-              <h6>{itemData.tagline}</h6>
-              <div className="genres">
-                {itemData.genres.map(({ id, name }) => (
-                  <span key={id}>{name}</span>
-                ))}
-              </div>
+            <Row>
+              <Col xs={12} md={6} lg={3}>
+                <img
+                  src={`http://image.tmdb.org/t/p/w500${itemData?.poster_path}`}
+                  alt="poster"
+                />
+              </Col>
+              <Col xs={12} md={6} lg={9}>
+                <Container className="item-details-content-text">
+                  <h2>{itemData.title ? itemData.title : itemData.name}</h2>
+                  <h6>{itemData.tagline}</h6>
+                  <div className="genres">
+                    {itemData.genres.map(({ id, name }) => (
+                      <span key={id}>{name}</span>
+                    ))}
+                  </div>
 
-              <Container className="mt-4 overview">
-                <h6>Overview</h6>
-                <p>{itemData?.overview}</p>
-              </Container>
+                  <Container className="mt-4 overview">
+                    <h6>Overview</h6>
+                    <p>{itemData?.overview}</p>
+                  </Container>
 
-              <Container className="crew">
-                <div>Directors</div>
-                <ul>
-                  {directors.map((w) => (
-                    <li>&otimes; {w.name}</li>
-                  ))}
-                </ul>
-              </Container>
+                  <Container className="crew">
+                    <div>Directors</div>
+                    <ul>
+                      {directors.map((w, i) => (
+                        <li key={i}>&otimes; {w.name}</li>
+                      ))}
+                    </ul>
+                  </Container>
 
-              <Container className="crew" style={{ borderBottom: "1px solid" }}>
-                <div>Writers</div>
-                <ul>
-                  {writers.map((w) => (
-                    <li>&otimes; {w.name}</li>
-                  ))}
-                </ul>
-              </Container>
-            </Container>
+                  <Container
+                    className="crew"
+                    style={{ borderBottom: "1px solid" }}
+                  >
+                    <div>Writers</div>
+                    <ul>
+                      {writers.map((w, i) => (
+                        <li key={i}>&otimes; {w.name}</li>
+                      ))}
+                    </ul>
+                  </Container>
+                </Container>
+              </Col>
+            </Row>
           </Container>
-          <hr />
+
           <CastsList casts={casts} />
         </>
       )}
