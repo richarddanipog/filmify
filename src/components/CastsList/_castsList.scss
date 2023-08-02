@@ -1,0 +1,12 @@
+.casts-list {
+  flex-wrap: nowrap !important;
+  overflow: auto;
+  scroll-behavior: smooth !important;
+  padding-bottom: 1em;
+  white-space: nowrap;
+
+  .person {
+    display: flex;
+    width: 30vw;
+  }
+}

@@ -1,0 +1,62 @@
+@import "react-multi-carousel/lib/styles.css";
+@import "./components/index.scss";
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+}
+
+.item-details {
+  &-img {
+    height: 40vh;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+    margin-bottom: 1em;
+  }
+  &-content {
+    height: 40vh;
+    margin-bottom: 2em;
+    display: flex;
+    img {
+      // height: 70%;
+      border-radius: 8px;
+    }
+
+    &-text {
+      height: 70%;
+
+      .genres {
+        margin-top: 1em;
+        span {
+          margin-right: 1em;
+          border: 1px solid;
+          padding: 0.23em 0.5em;
+          border-radius: 2em;
+        }
+      }
+
+      .crew {
+        display: flex;
+        align-items: center;
+        padding: 1em 0.5em;
+        border-top: 1px solid;
+
+        > div {
+          font-weight: 800;
+        }
+
+        ul {
+          margin: 0;
+          li {
+            display: inline;
+
+            margin-right: 1em;
+          }
+        }
+      }
+    }
+  }
+}

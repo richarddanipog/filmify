@@ -1,0 +1,207 @@
+@import "react-multi-carousel/lib/styles.css";
+.navbar {
+  color: white;
+}
+.navbar .nav-link {
+  color: white;
+}
+
+.text-logo {
+  margin-right: 1.5em;
+}
+.text-logo h2 {
+  color: orangered;
+  font-family: "Comic Sans MS";
+  font-weight: 600;
+}
+
+/* If you want to change the color on hover and when active (clicked) */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: orange !important;
+  transition: all;
+}
+
+.banner {
+  height: 65vh;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner .input-wrapper {
+  display: flex;
+  margin-top: 2em;
+}
+.banner .input-wrapper input {
+  width: 100%;
+  padding: 0.75em;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+}
+.banner .input-wrapper input:focus {
+  outline-width: 0;
+}
+.banner .input-wrapper button {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  background-color: orange;
+  color: white;
+  padding: 0 1em;
+}
+
+.wrapper-row-item {
+  position: relative;
+}
+
+.row-items {
+  flex-wrap: nowrap !important;
+  overflow: auto;
+  scroll-behavior: smooth !important;
+  padding-bottom: 1em;
+  white-space: nowrap;
+  width: 100%;
+}
+.row-items .item-card {
+  width: 13rem;
+  border: none;
+  height: 100%;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+.row-items .item-card img {
+  height: 100%;
+}
+.row-items .item-card:hover {
+  cursor: pointer;
+}
+.row-items .item-card:hover::after {
+  opacity: 0;
+}
+.row-items .item-card .score-rating {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  padding: 0 0.5em;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 1rem;
+  top: 0.5em;
+  left: 0.5em;
+}
+
+/* Track styles */
+.row-items::-webkit-scrollbar-track {
+  background-color: transparent; /* Background color of the track */
+  border-radius: 8px; /* Border radius of the track */
+}
+
+/* Handle (thumb) styles */
+.row-items::-webkit-scrollbar-thumb {
+  background-color: #212020; /* Color of the scrollbar handle */
+  border-radius: 8px; /* Border radius of the handle */
+}
+
+/* Handle on hover */
+.row-items::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scrollbar handle on hover */
+  overflow-x: auto;
+}
+
+.wrapper-row-item .hide-shadow .row-items {
+  display: none !important;
+}
+
+.blog-card {
+  height: 35vh;
+  width: 100%;
+  border-radius: 8px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.blog-card .card {
+  width: 60%;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.blog-card-button {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
+
+.blog-card-wrapper {
+  height: 40vh;
+}
+
+.casts-list {
+  flex-wrap: nowrap !important;
+  overflow: auto;
+  scroll-behavior: smooth !important;
+  padding-bottom: 1em;
+  white-space: nowrap;
+}
+.casts-list .person {
+  display: flex;
+  width: 30vw;
+}
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+}
+
+.item-details-img {
+  height: 40vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+.item-details-content {
+  height: 40vh;
+  margin-bottom: 2em;
+  display: flex;
+}
+.item-details-content img {
+  border-radius: 8px;
+}
+.item-details-content-text {
+  height: 70%;
+}
+.item-details-content-text .genres {
+  margin-top: 1em;
+}
+.item-details-content-text .genres span {
+  margin-right: 1em;
+  border: 1px solid;
+  padding: 0.23em 0.5em;
+  border-radius: 2em;
+}
+.item-details-content-text .crew {
+  display: flex;
+  align-items: center;
+  padding: 1em 0.5em;
+  border-top: 1px solid;
+}
+.item-details-content-text .crew > div {
+  font-weight: 800;
+}
+.item-details-content-text .crew ul {
+  margin: 0;
+}
+.item-details-content-text .crew ul li {
+  display: inline;
+  margin-right: 1em;
+}

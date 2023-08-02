@@ -1,0 +1,21 @@
+.navbar {
+  color: white;
+  .nav-link {
+    color: white;
+  }
+}
+
+.text-logo {
+  margin-right: 1.5em;
+  h2 {
+    color: orangered;
+    font-family: "Comic Sans MS";
+    font-weight: 600;
+  }
+}
+/* If you want to change the color on hover and when active (clicked) */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: orange !important;
+  transition: all;
+}
