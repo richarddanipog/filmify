@@ -3,12 +3,12 @@ import movieTrending from "../data/movieTrending.json"; //remove this
 import tvTrending from "../data/tvTrending.json"; //remove this
 import movie from "../data/movie.json"; //remove this
 import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import { Banner } from "../components/Banner/Banner";
 import { ItemsList } from "../components/ItemsList/ItemsList";
 import { IMovie } from "../interfaces/movie.interface";
 import { ITVSeries } from "../interfaces/tvSeries.interface";
 import BlogCard from "../components/BlogCard/BlogCard";
-import { Container } from "react-bootstrap";
 import Loading from "../components/Loading/Loading";
 
 const { REACT_APP_API_KEY, REACT_APP_TMDB_URL } = process.env;
@@ -43,21 +43,23 @@ const Home = (): JSX.Element => {
     });
   };
 
-  useEffect(() => {
-    getTrendMovies();
-    getTrendTvSeries();
-  }, []);
-
   // useEffect(() => {
-  //   // Test ONLY
-  //   setMovies(movieTrending.results);
-  //   setTvSeries(tvTrending.results);
-  //   setRandomItem(movie);
+  //   window.scrollTo(0, 0);
 
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1000);
+  //   getTrendMovies();
+  //   getTrendTvSeries();
   // }, []);
+
+  useEffect(() => {
+    // Test ONLY
+    setMovies(movieTrending.results);
+    setTvSeries(tvTrending.results);
+    setRandomItem(movie);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <Container fluid className="p-0">

@@ -59,17 +59,17 @@ const ItemDetails = (): JSX.Element => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (id) {
-      getItemData(id);
-      getItemCasts(id);
-    }
+    // if (id) {
+    //   getItemData(id);
+    //   getItemCasts(id);
+    // }
 
-    // setTimeout(() => {
-    //   setItemData(movieDetailTest);
-    //   setCasts(castsData.cast);
-    //   setDirectors(castsData.crew.filter((c: any) => c.job === "Director"));
-    //   setWriters(castsData.crew.filter((c: any) => c.job === "Writer"));
-    // }, 2000);
+    setTimeout(() => {
+      setItemData(movieDetailTest);
+      setCasts(castsData.cast);
+      setDirectors(castsData.crew.filter((c: any) => c.job === "Director"));
+      setWriters(castsData.crew.filter((c: any) => c.job === "Writer"));
+    }, 2000);
   }, [id, getItemCasts, getItemData]);
 
   return (

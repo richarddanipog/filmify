@@ -12,7 +12,7 @@ export const Navbar = () => {
           <Nav.Link to="/" as={NavLink}>
             Home
           </Nav.Link>
-          <Nav.Link to="/movies" as={NavLink} disabled>
+          <Nav.Link to="/gallery/movie" as={NavLink}>
             Movies
           </Nav.Link>
           <Nav.Link to="/tv-series" as={NavLink} disabled>
