@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -19,6 +19,32 @@ const ItemDetails = (): JSX.Element => {
   const [writers, setWriters] = useState<ICrew[]>([]);
   const { id, media_type } = useParams<{ id: string; media_type: string }>();
 
+  const getItemData = useCallback(async (id: string) => {
+    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}?api_key=${REACT_APP_API_KEY}`;
+
+    const { data } = await axios.get(url);
+    setItemData(data);
+  }, []);
+
+  const getItemCasts = useCallback(async (id: string) => {
+    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}/credits?api_key=${REACT_APP_API_KEY}`;
+
+    const { data } = await axios.get(url);
+    setCasts(data.cast);
+    setDirectors(getItemDirectors(data.crew));
+    setWriters(getItemWriters(data.crew));
+  }, []);
+
+  const getItemWriters = (data: any) => {
+    return data.filter((c: any) => c.job === "Writer");
+  };
+
+  const getItemDirectors = (data: any) => {
+    return data.filter(
+      (c: any) => c.job === "Director" || c?.known_for_department === "Writing"
+    );
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -33,33 +59,7 @@ const ItemDetails = (): JSX.Element => {
     //   setDirectors(castsData.crew.filter((c: any) => c.job === "Director"));
     //   setWriters(castsData.crew.filter((c: any) => c.job === "Writer"));
     // }, 2000);
-  }, [id]);
-
-  const getItemData = (id: string) => {
-    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}?api_key=${REACT_APP_API_KEY}`;
-
-    axios.get(url).then(({ data }) => setItemData(data));
-  };
-
-  const getItemCasts = (id: string) => {
-    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}/credits?api_key=${REACT_APP_API_KEY}`;
-
-    axios.get(url).then(({ data }) => {
-      setCasts(data.cast);
-      setDirectors(getItemDirectors(data.crew));
-      setWriters(getItemWriters(data.crew));
-    });
-  };
-
-  const getItemWriters = (data: any) => {
-    return data.filter((c: any) => c.job === "Writer");
-  };
-
-  const getItemDirectors = (data: any) => {
-    return data.filter(
-      (c: any) => c.job === "Director" || c?.known_for_department === "Writing"
-    );
-  };
+  }, [id, getItemCasts, getItemData]);
 
   return (
     <Container className="item-details">
