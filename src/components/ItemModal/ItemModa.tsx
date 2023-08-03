@@ -21,16 +21,16 @@ const ItemModal: FunctionComponent<ItemModalProps> = ({
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header style={{ backgroundColor: "#282c34", color: "white" }}>
         <Modal.Title id="contained-modal-title-vcenter">
           {item.title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{ backgroundColor: "#282c34", color: "white" }}>
         <h4>Overview</h4>
         <p>{item.overview}</p>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer style={{ backgroundColor: "#282c34", color: "white" }}>
         <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

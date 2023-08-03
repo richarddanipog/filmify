@@ -28,7 +28,18 @@ const GalleryMedia = (): JSX.Element => {
                 className="img-overlay"
                 style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
               >
-                <ThreeDots onClick={() => setModalShow(item.id)} />
+                <span
+                  onClick={() => setModalShow(item.id)}
+                  className="item-icon"
+                  style={{
+                    backgroundColor: "rgba(0,0,0,0.72)",
+                    padding: ".35em",
+                    cursor: "pointer",
+                    borderRadius: "50%",
+                  }}
+                >
+                  <ThreeDots />
+                </span>
 
                 <ItemModal
                   show={modalShow}

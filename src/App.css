@@ -68,6 +68,7 @@
   width: 100%;
 }
 .row-items .item-card {
+  position: relative;
   width: 13rem;
   border: none;
   height: 100%;
