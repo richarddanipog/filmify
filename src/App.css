@@ -155,6 +155,16 @@
   display: flex;
 }
 
+.gallery-card .img-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.gallery-card .img-overlay .item-icon {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.35em;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 .App {
   background-color: #282c34;
   min-height: 100vh;

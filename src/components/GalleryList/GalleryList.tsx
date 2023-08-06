@@ -22,20 +22,8 @@ export const GalleryList = ({
               src={`http://image.tmdb.org/t/p/original${item.poster_path}`}
               alt="Card image"
             />
-            <Card.ImgOverlay
-              className="img-overlay"
-              style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
-            >
-              <span
-                onClick={() => setModalShow(item.id)}
-                className="item-icon"
-                style={{
-                  backgroundColor: "rgba(0,0,0,0.72)",
-                  padding: ".35em",
-                  cursor: "pointer",
-                  borderRadius: "50%",
-                }}
-              >
+            <Card.ImgOverlay className="img-overlay">
+              <span onClick={() => setModalShow(item.id)} className="item-icon">
                 <ThreeDots />
               </span>
 
