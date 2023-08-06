@@ -165,6 +165,17 @@
   border-radius: 50%;
 }
 
+#item-modal .modal-content {
+  background-color: #282c34;
+  color: #fff;
+}
+#item-modal .modal-content .modal-body img {
+  width: 100%;
+}
+#item-modal .modal-content .modal-footer .btn {
+  color: #fff;
+}
+
 .App {
   background-color: #282c34;
   min-height: 100vh;

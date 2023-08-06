@@ -16,18 +16,19 @@ const ItemModal: FunctionComponent<ItemModalProps> = ({
 }) => {
   return (
     <Modal
+      id={"item-modal"}
       show={show === item.id}
       onHide={onHide}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header style={{ backgroundColor: "#282c34", color: "white" }}>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           {item.title} ({item.original_language.toUpperCase()})
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body style={{ backgroundColor: "#282c34", color: "white" }}>
+      <Modal.Body>
         <Row>
           <Col sm={12} md={8}>
             <h4>Overview</h4>
@@ -38,13 +39,12 @@ const ItemModal: FunctionComponent<ItemModalProps> = ({
             <img
               className="rounded"
               src={`http://image.tmdb.org/t/p/w500${item.backdrop_path}`}
-              style={{ width: "100%" }}
             />
           </Col>
         </Row>
       </Modal.Body>
-      <Modal.Footer style={{ backgroundColor: "#282c34", color: "white" }}>
-        <Button variant="warning" style={{ color: "white" }} onClick={onHide}>
+      <Modal.Footer>
+        <Button variant="warning" onClick={onHide}>
           Close
         </Button>
       </Modal.Footer>
