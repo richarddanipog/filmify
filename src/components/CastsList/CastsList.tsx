@@ -20,7 +20,7 @@ export const CastsList = ({ casts }: CastsListProps): JSX.Element => {
                   ? `http://image.tmdb.org/t/p/w132_and_h132_face${people.profile_path}`
                   : "/no_avatar.jpeg"
               }
-              alt="avatar picture"
+              alt=""
             />
 
             <div className="m-4 d-flex  justify-content-center flex-column">

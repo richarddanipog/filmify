@@ -19,21 +19,27 @@ const ItemDetails = (): JSX.Element => {
   const [writers, setWriters] = useState<ICrew[]>([]);
   const { id, media_type } = useParams<{ id: string; media_type: string }>();
 
-  const getItemData = useCallback(async (id: string) => {
-    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}?api_key=${REACT_APP_API_KEY}`;
+  const getItemData = useCallback(
+    async (id: string) => {
+      const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}?api_key=${REACT_APP_API_KEY}`;
 
-    const { data } = await axios.get(url);
-    setItemData(data);
-  }, []);
+      const { data } = await axios.get(url);
+      setItemData(data);
+    },
+    [media_type]
+  );
 
-  const getItemCasts = useCallback(async (id: string) => {
-    const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}/credits?api_key=${REACT_APP_API_KEY}`;
+  const getItemCasts = useCallback(
+    async (id: string) => {
+      const url = `${REACT_APP_TMDB_URL}/${media_type}/${id}/credits?api_key=${REACT_APP_API_KEY}`;
 
-    const { data } = await axios.get(url);
-    setCasts(data.cast);
-    setDirectors(getItemDirectors(data.crew));
-    setWriters(getItemWriters(data.crew));
-  }, []);
+      const { data } = await axios.get(url);
+      setCasts(data.cast);
+      setDirectors(getItemDirectors(data.crew));
+      setWriters(getItemWriters(data.crew));
+    },
+    [media_type]
+  );
 
   const getItemWriters = (data: any) => {
     return data.filter((c: any) => c.job === "Writer");
